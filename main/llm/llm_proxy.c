@@ -184,21 +184,29 @@ static esp_err_t http_event_handler(esp_http_client_event_t *evt)
 
 static bool provider_is_openai(void)
 {
-    return strcmp(s_provider, "openai") == 0;
+    return strcmp(s_provider, "openai") == 0 || strcmp(s_provider, "gemini") == 0;
+}
+
+static bool provider_is_gemini(void)
+{
+    return strcmp(s_provider, "gemini") == 0;
 }
 
 static const char *llm_api_url(void)
 {
+    if (provider_is_gemini()) return MIMI_GEMINI_API_URL;
     return provider_is_openai() ? MIMI_OPENAI_API_URL : MIMI_LLM_API_URL;
 }
 
 static const char *llm_api_host(void)
 {
+    if (provider_is_gemini()) return "generativelanguage.googleapis.com";
     return provider_is_openai() ? "api.openai.com" : "api.anthropic.com";
 }
 
 static const char *llm_api_path(void)
 {
+    if (provider_is_gemini()) return "/v1beta/openai/chat/completions";
     return provider_is_openai() ? "/v1/chat/completions" : "/v1/messages";
 }
 
