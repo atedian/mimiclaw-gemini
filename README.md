@@ -1,5 +1,7 @@
 # MimiClaw: Pocket AI Assistant on a $5 Chip
 
+> This repository is a derivative improvement of the original [memovai/mimiclaw](https://github.com/memovai/mimiclaw), adapted to add **Gemini API support** while keeping the original ESP32-first architecture.
+
 <p align="center">
   <img src="assets/banner.png" alt="MimiClaw" width="500" />
 </p>
@@ -19,6 +21,8 @@
 
 MimiClaw turns a tiny ESP32-S3 board into a personal AI assistant. Plug it into USB power, connect to WiFi, and talk to it through Telegram — it handles any task you throw at it and evolves over time with local memory — all on a chip the size of a thumb.
 
+This fork adds **Google Gemini** support through the OpenAI-compatible Gemini endpoint, so the device can run with **Anthropic**, **OpenAI**, or **Gemini** as the LLM provider.
+
 ## Meet MimiClaw
 
 - **Tiny** — No Linux, no Node.js, no bloat — just pure C
@@ -31,7 +35,7 @@ MimiClaw turns a tiny ESP32-S3 board into a personal AI assistant. Plug it into 
 
 ![](assets/mimiclaw.png)
 
-You send a message on Telegram. The ESP32-S3 picks it up over WiFi, feeds it into an agent loop — the LLM thinks, calls tools, reads memory — and sends the reply back. Supports both **Anthropic (Claude)** and **OpenAI (GPT)** as providers, switchable at runtime. Everything runs on a single $5 chip with all your data stored locally on flash.
+You send a message on Telegram. The ESP32-S3 picks it up over WiFi, feeds it into an agent loop — the LLM thinks, calls tools, reads memory — and sends the reply back. Supports **Anthropic (Claude)**, **OpenAI (GPT)**, and **Gemini** as providers, switchable at runtime. Everything runs on a single $5 chip with all your data stored locally on flash.
 
 ## Quick Start
 
@@ -40,7 +44,7 @@ You send a message on Telegram. The ESP32-S3 picks it up over WiFi, feeds it int
 - An **ESP32-S3 dev board** with 16 MB flash and 8 MB PSRAM (e.g. Xiaozhi AI board, ~$10)
 - A **USB Type-C cable**
 - A **Telegram bot token** — talk to [@BotFather](https://t.me/BotFather) on Telegram to create one
-- An **Anthropic API key** — from [console.anthropic.com](https://console.anthropic.com), or an **OpenAI API key** — from [platform.openai.com](https://platform.openai.com)
+- An **Anthropic API key** — from [console.anthropic.com](https://console.anthropic.com), an **OpenAI API key** — from [platform.openai.com](https://platform.openai.com), or a **Gemini API key** — from [Google AI Studio](https://aistudio.google.com/)
 
 ### Install
 
